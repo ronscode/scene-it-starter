@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function () {
   var myWatchlist = localStorage.getItem('watchlist');
   var watchlistJSON = JSON.parse(myWatchlist);
-  // console.log(myWatchlist)
+  console.log(myWatchlist)
   console.log(watchlistJSON)
 
   var moviesContainer = document.getElementById('movies-container')
