@@ -1,4 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
+  var myWatchlist = localStorage.getItem('watchlist');
+  var watchlistJSON = JSON.parse(myWatchlist);
+  // console.log(myWatchlist)
+  console.log(watchlistJSON)
 
   var moviesContainer = document.getElementById('movies-container')
   function renderMovies(movieArray) {
@@ -16,30 +20,5 @@ document.addEventListener('DOMContentLoaded', function () {
     console.log(movieHTML)
     return movieHTML.join('');
   }
-  document.getElementById('search-form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    moviesContainer.innerHTML = renderMovies(movieData);
-
-  });
+  moviesContainer.innerHTML = renderMovies(watchlistJSON);
 });
-
-function saveToWatchlist(imdbID) {
-
-  var movie = movieData.find(function (currentMovie) {
-    return currentMovie.imdbID == imdbID;
-  });
-
-  var watchlistJSON = localStorage.getItem('watchlist');
-  var watchlist = JSON.parse(watchlistJSON);
-  if (!watchlist) {
-    watchlist = [];
-  }
-  watchlist.push(movie);
-  watchlistJSON = JSON.stringify(watchlist);
-  localStorage.setItem('watchlist', watchlistJSON);
-
-
-}
-
-
-
