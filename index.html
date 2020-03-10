@@ -17,19 +17,28 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="data.js"></script>
   <script src="index.js"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="index.css" />
 </head>
 
 <body>
+
   <div class="container">
     <div class="row">
       <div class="col-12 header text-center">
         <h2 class="display-2">Scene It App</h2>
-        <p>Search for movies you want to watch.</p>
-        <p>Save them to your list</p>
+        <div class="alert alert-dark w-50 m-auto" role="alert">
+          Search for movies and add them to the watchlist.
+          <div class="watchlist">
+            <a href="watchlist.html" class="btn btn-sm btn-primary">View Watchlist</a>
+          </div>
+        </div>
+
       </div>
     </div>
-    <div class="row">
+    <div class="row mt-4">
       <div class="col-12 search">
         <form id="search-form">
           <div class="input-group input-group-lg">
@@ -44,11 +53,10 @@
 
         <!-- MOVIES SHOW UP HERE! -->
         <div class="movies-container">
-          <div id="movies-container" class="row">
+          <div id="movies-container" class="row justify-content-around">
 
-          </div>
-          <div class="watchlist">
-            <a href="watchlist.html" class="btn btn-primary">MY WATCHLIST!</a>
+
+
           </div>
         </div>
 

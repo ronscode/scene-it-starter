@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
               <div class="card-body">
                 <h5 id="movieTitle" class="card-title">${currentMovie.Title}</h5>
                 <p id="movieYear" class="card-text">${currentMovie.Year}</p>
-                <button class="btn btn-primary" onclick='saveToWatchlist("${currentMovie.imdbID}")'>Add Movie</button>
+                <button class="btn btn-primary" onclick='removeFromWatchlist("${currentMovie.imdbID}")'>Remove</button>
               </div>
             </div>`
     });
@@ -22,3 +22,18 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   moviesContainer.innerHTML = renderMovies(watchlistJSON);
 });
+
+function removeFromWatchlist(imdbID) {
+  var watchlistJSON = localStorage.getItem('watchlist');
+  var watchlist = JSON.parse(watchlistJSON);
+
+  var movie = watchlist.find(function (currentMovie) {
+    return currentMovie.imdbID;
+  });
+
+
+  console.log("The movie to delete is " + movie)
+
+  watchlistJSON = JSON.stringify(watchlist);
+  localStorage.setItem('watchlist', watchlistJSON);
+}

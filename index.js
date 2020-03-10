@@ -6,15 +6,35 @@ document.addEventListener('DOMContentLoaded', function () {
   function renderMovies(movieArray) {
     var movieHTML = movieArray.map(function (currentMovie) {
       console.log(currentMovie)
-      return `<div class="card m-2" style="width: 14rem;">
-              <img id="movieImage" class="card-img-top" src="${currentMovie.Poster}" alt="Movie Image">
-              <div class="card-body">
-                <h5 id="movieTitle" class="card-title">${currentMovie.Title}</h5>
-                <p id="movieYear" class="card-text">${currentMovie.Year}</p>
-                <button class="btn btn-primary" onclick='saveToWatchlist("${currentMovie.imdbID}")'>Add Movie</button>
+      return `     <!-- Single Movie -->
+      <div class="col-xs-12 col-sm-6 col-md-3">
+          <div class="image-flip" ontouchstart="this.classList.toggle('hover');">
+              <div class="mainflip">
+                  <div class="frontside">
+                      <div class="card">
+                          <div class="card-body text-center">
+                             <div> <p><img class=" img-fluid" src="${currentMovie.Poster}" alt="card image"></p></div>
+                              <h3 class="card-title mb-2 text-truncate">${currentMovie.Title}</h3>
+                              <h5>${currentMovie.Year}</h5>
+                              <button class="btn btn-primary" onclick='saveToWatchlist("${currentMovie.imdbID}")'>Add Movie</button>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="backside">
+                      <div class="card">
+                          <div class="card-body text-center mt-4">
+                              <h4 class="card-title">${currentMovie.Title}</h4>
+                          </div>
+                      </div>
+                  </div>
               </div>
-            </div>`
+          </div>
+      </div>
+      <!-- ./Single Movie -->
+      
+      `
     });
+
     return movieHTML.join('');
   }
 
@@ -52,3 +72,13 @@ function saveToWatchlist(imdbID) {
   watchlistJSON = JSON.stringify(watchlist);
   localStorage.setItem('watchlist', watchlistJSON);
 }
+
+
+// <div class="col-3">
+//       <div><img id="movieImage" class="img-fluid mw-20" src="${currentMovie.Poster}" alt="Movie Image">
+//       <div class="">
+//         <h5 id="movieTitle" class="">${currentMovie.Title}</h5>
+//         <p id="movieYear" class="">${currentMovie.Year}</p>
+//         <button class="btn btn-primary" onclick='saveToWatchlist("${currentMovie.imdbID}")'>Add Movie</button>
+//       </div></div>
+//     </div>
